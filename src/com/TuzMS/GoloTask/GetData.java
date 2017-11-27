@@ -15,19 +15,23 @@ public class GetData {
 			File taskFile = new File(taskFileName); //Файл открыт
 			FileReader readTaskFile = new FileReader(taskFile); //Файл открыт для чтения
 			BufferedReader reader = new BufferedReader(readTaskFile); //Читатель файла
-			
 			String line = reader.readLine();
 			
 			for (int i = 0; i <=11; i++){
-				line = reader.readLine();
 				//Отмотка до строки со значениями
+				line = reader.readLine();
 			}
+			
+			int i = 0; //Счётчик массивов
 			
 			while (line != null){
 				System.out.println(line);
+				
 				line = reader.readLine();
 			}
+			
 			System.out.println("Готово");
+			readTaskFile.close();
 		} catch (IOException ex) {
 			System.out.println(ex.getMessage());
 		}
