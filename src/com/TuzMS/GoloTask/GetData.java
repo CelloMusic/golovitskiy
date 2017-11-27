@@ -7,8 +7,8 @@ import java.io.BufferedReader;
 
 public class GetData {
 	private final String taskFileName = "Task.txt"; //Название файла с заданием
-	private float[] arrX; //Массив значений X
-	private float[] arrY; //Массив значений Y
+	private float[] arrX = new float[33]; //Массив значений X
+	private float[] arrY = new float[33]; //Массив значений Y
 	
 	public void readFile(String fileName) {
 		try {
@@ -17,20 +17,22 @@ public class GetData {
 			BufferedReader reader = new BufferedReader(readTaskFile); //Читатель файла
 			String line = reader.readLine();
 			
-			for (int i = 0; i <=11; i++){
+			for (int i = 1; i <=12; i++){
 				//Отмотка до строки со значениями
 				line = reader.readLine();
 			}
 			
 			int i = 0; //Счётчик массивов
+			CorrectRecord rec = new CorrectRecord(); //Для записи числа в правильной форме
 			
 			while (line != null){
-				System.out.println(line);
-				
+				//Записываем значения точек в массивы
+				arrX[i] = rec.Rewrite(line);
 				line = reader.readLine();
+				arrY[i] = rec.Rewrite(line);
+				line = reader.readLine();
+				i++;
 			}
-			
-			System.out.println("Готово");
 			readTaskFile.close();
 		} catch (IOException ex) {
 			System.out.println(ex.getMessage());
@@ -40,4 +42,12 @@ public class GetData {
 	public String getTaskFileName() {
 		return taskFileName;
 	}
+	private float[] getArrX() {
+		return arrX;
+	}
+
+	private float[] getArrY() {
+		return arrY;
+	}	
+	
 }
