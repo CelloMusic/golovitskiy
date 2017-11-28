@@ -37,7 +37,7 @@ public class MHK extends Method {
 	
 	private GaussMethod mnkRes = new GaussMethod(3, RaschA(), RaschB());
 	
-	public double[] MHKRes() {
+	public double[] MHKResh() {
 		a = mnkRes.GaussM();
 		return a;
 	}
