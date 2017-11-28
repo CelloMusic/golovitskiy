@@ -42,11 +42,11 @@ public class GetData {
 	public String getTaskFileName() {
 		return taskFileName;
 	}
-	private float[] getArrX() {
+	public float[] getArrX() {
 		return arrX;
 	}
 
-	private float[] getArrY() {
+	public float[] getArrY() {
 		return arrY;
 	}	
 	
