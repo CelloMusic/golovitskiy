@@ -14,6 +14,7 @@ public class Method {
 	}
 		
 	protected double[] ResApproks() {
+		//Результат аппроксимации
 		double[] YRes = new double[k];
 		for (int j = 0; j < k; j++) {
 			YRes[j] = a[1]*Xi[j] + a[2]*Math.pow(Xi[j], 3)

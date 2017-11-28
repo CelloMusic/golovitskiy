@@ -38,6 +38,7 @@ public class MHK extends Method {
 	private GaussMethod mnkRes = new GaussMethod(3, RaschA(), RaschB());
 	
 	public double[] MHKResh() {
+		//Собственно нахождение коэффициетов аппроксимации
 		a = mnkRes.GaussM();
 		return a;
 	}

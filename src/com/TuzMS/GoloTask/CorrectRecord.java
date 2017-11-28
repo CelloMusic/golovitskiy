@@ -1,7 +1,7 @@
 package com.TuzMS.GoloTask;
 
 public class CorrectRecord {
-	//Данный класс переделывае запись числа в форму, необходимую для типа float
+	//Данный класс переделывае запись числа в форму, необходимую для типа double
 	
 	public double Rewrite(String fStr) {
 		
