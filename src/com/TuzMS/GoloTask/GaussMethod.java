@@ -14,9 +14,9 @@ public class GaussMethod {
 	}
 	
 	public float[] GaussM() {
-		float[] X = new float[n]; //Столбец неизвестных
+		float[] X = new float[n--]; //Столбец неизвестных
 		//Прямой ход метода Гаусса
-		for (int k = 1; k <= n - 1; k++) {
+		for (int k = 0; k <= n - 1; k++) {
 			for (int i = k + 1; i <= n; i++) {
 				float c = A[i][k] / A[k][k];
 				A[i][k] = 0;
@@ -28,7 +28,7 @@ public class GaussMethod {
 		}
 		//Обратный ход метода Гаусса
 		X[n] = B[n] / A[n][n];
-		for (int i = n - 1; i >= 1; i--) {
+		for (int i = n - 1; i >= 0; i--) {
 			float s = 0;
 			for (int j = i+1; j <= n; j++) {
 				s += A[i][j] * X[j];
