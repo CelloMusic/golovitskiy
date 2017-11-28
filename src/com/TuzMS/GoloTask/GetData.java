@@ -7,8 +7,8 @@ import java.io.BufferedReader;
 
 public class GetData {
 	private final String taskFileName = "Task.txt"; //Название файла с заданием
-	private float[] arrX = new float[33]; //Массив значений X
-	private float[] arrY = new float[33]; //Массив значений Y
+	private double[] arrX = new double[33]; //Массив значений X
+	private double[] arrY = new double[33]; //Массив значений Y
 	
 	public void readFile(String fileName) {
 		try {
@@ -42,11 +42,11 @@ public class GetData {
 	public String getTaskFileName() {
 		return taskFileName;
 	}
-	public float[] getArrX() {
+	public double[] getArrX() {
 		return arrX;
 	}
 
-	public float[] getArrY() {
+	public double[] getArrY() {
 		return arrY;
 	}	
 	
