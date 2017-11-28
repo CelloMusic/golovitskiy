@@ -2,7 +2,11 @@ package com.TuzMS.GoloTask;
 
 public class MHK extends Method {
 	//Метод наименьших квадратов
-	
+
+	public MHK(double[] x, double[] y) {
+		super(x, y);
+	}
+
 	private double[] RaschB() {
 		//Расчёт столбца свободных членов СЛАУ (2.5)
 		double[] b = new double[3]; //Столбец свободных членов СЛАУ (2.5)
