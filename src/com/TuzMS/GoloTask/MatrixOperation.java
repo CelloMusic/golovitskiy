@@ -100,17 +100,16 @@ public class MatrixOperation {
 	
 	public double[][] Transp(double[][] A) {
 		//Транспонирование матрицы
-		int n = A.length;
-		double c;
+		int ni = A.length;
+		int nj = A[0].length;
+		double[][] M = new double[nj][ni];
 		
-		for (int i = 1; i < n; i++) {
-			for (int j = 0; j < i; j++) {
-				c = A[i][j];
-				A[i][j] = A[j][i];
-				A[j][i] = c;
+		for (int i = 0; i < ni; i++) {
+			for (int j = 0; j < nj; j++) {
+				M[j][i] = A[i][j];
 			}
 		}
-		return A;
+		return M;
 	}
 	
 	public double[][] Obrat(double[][] A) {
