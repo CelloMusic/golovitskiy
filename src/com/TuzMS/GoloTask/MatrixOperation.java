@@ -41,37 +41,16 @@ public class MatrixOperation {
 	}
 	
 	public double Det(double[][] A) {
-		//Нахождение определителя матрицы
-		int n = A.length; //Размер матрицы А
-		double max;
-		int r;
+		//Нахождение определителя матрицы рекурсивным алгоритмом
+		double det = 0;
+		int n = A.length;
 		
-		double det = 1;
-		for (int k = 0; k < n; k++) {
-			max = Math.abs(A[k][k]);
-			r = k;
-			for (int i = k+1; i < n; i++) {
-				if (Math.abs(A[i][k]) > max) {
-					max = Math.abs(A[i][k]);
-					r = i;
-				}
+		if (n == 2) {
+			det = A[0][0] * A[1][1] - A[0][1] * A [1][0];
+		} else {
+			for (int i = 0; i < n; i++) {
+				det += Math.pow(-1, i+1) * A[1][i] * Det(MinorMatrix(A, 1, i));
 			}
-			if (r != k) {
-				det *= (-1);
-			}
-			for (int j = 0; j < n; j++) {
-				double c = A[k][j];
-				A[k][j] = A[r][j];
-				A[r][j] = c;
-			}
-			for (int i = k+1; i < n; i++) {
-				for (int j = k; j < n; j++) {
-					A[i][j] -= A[i][k] * A[k][j] / A[k][k];
-				}
-			}
-		}
-		for (int i = 0; i < n; i++) {
-			det *= A[i][i];
 		}
 		return det;
 	}
