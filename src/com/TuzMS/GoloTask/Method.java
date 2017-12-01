@@ -17,10 +17,14 @@ public class Method {
 		//Результат аппроксимации
 		double[] YRes = new double[k];
 		for (int j = 0; j < k; j++) {
-			YRes[j] = a[1]*Xi[j] + a[2]*Math.pow(Xi[j], 3)
-					+ a[3]*Math.pow(Xi[j], 5);
+			YRes[j] = yRes(Xi[j]);
 		}
 		return YRes;
+	}
+	
+	protected double yRes(double x) {
+		//Результат аппроксимации в точке х
+		return a[1]*x + a[2]*Math.pow(x, 3) + a[3]*Math.pow(x, 5);
 	}
 
 }
