@@ -80,19 +80,19 @@ public class MatrixOperation {
 		return M;
 	}
 	
-	public double AlgebDop(double[][] A, int ai, int aj) {
+	public double AlgDop(double[][] A, int ai, int aj) {
 		//Ќахождение алгебраического дополнени€ A(ai, aj)
 		return Math.pow(-1, ai + aj) * Det(MinorMatrix(A, ai, aj));
 	}
 	
-	public double[][] MatrixMinors(double[][] A) {
+	public double[][] AlgDopMatrix(double[][] A) {
 		//Ќахождени€ матрицы алгабраических дополнений
 		int n = A.length;
 		double[][] M = new double[n][n];
 		
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < n; j++) {
-				M[i][j] = AlgebDop(A, i, j);
+				M[i][j] = AlgDop(A, i, j);
 			}
 		}
 		return M;
@@ -113,8 +113,9 @@ public class MatrixOperation {
 		return A;
 	}
 	
-	/*public double[][] Obrat(double[][] A) {
-		
-	}*/
+	public double[][] Obrat(double[][] A) {
+		//Ќахождение обратной матрицы
+		return MultiNM(Transp(AlgDopMatrix(A)), 1/Det(A));
+	}
 	
 }
