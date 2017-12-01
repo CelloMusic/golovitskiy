@@ -80,14 +80,19 @@ public class MatrixOperation {
 		return M;
 	}
 	
+	public double AlgebDop(double[][] A, int ai, int aj) {
+		//Нахождение алгебраического дополнения A(ai, aj)
+		return Math.pow(-1, ai + aj) * Det(MinorMatrix(A, ai, aj));
+	}
+	
 	public double[][] MatrixMinors(double[][] A) {
-		//Нахождения матрицы, коэф которой являются миноры с соотв индексами
+		//Нахождения матрицы алгабраических дополнений
 		int n = A.length;
 		double[][] M = new double[n][n];
 		
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < n; j++) {
-				M[i][j] = Det(MinorMatrix(A, i, j));
+				M[i][j] = AlgebDop(A, i, j);
 			}
 		}
 		return M;
@@ -107,5 +112,9 @@ public class MatrixOperation {
 		}
 		return A;
 	}
+	
+	/*public double[][] Obrat(double[][] A) {
+		
+	}*/
 	
 }
