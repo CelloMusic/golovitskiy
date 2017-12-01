@@ -27,7 +27,7 @@ public class MatrixOperation {
 		}
 	}
 	
-	public double[][] MultiNM(double[][] A, double n){
+	public double[][] MultiNM(double[][] A, double n) {
 		//Умножение матрицы на число
 		int ai = A.length; //Число строк матрицы А
 		int aj = A[0].length; //Число столбцов матрицы А
@@ -56,8 +56,7 @@ public class MatrixOperation {
 	}
 	
 	public double[][] MinorMatrix(double[][] A, int ai, int aj) {
-		//Нахождение матрицы минора А(ai, aj)
-		//ai - вычёркиваемая строка, aj - столбец
+		//Нахождение матрицы минора А(ai, aj) (вычёркинание ai строки и aj столбца)
 		int n = A.length - 1;
 		double[][] M = new double[n][n];
 		
@@ -79,6 +78,34 @@ public class MatrixOperation {
 			}
 		}
 		return M;
+	}
+	
+	public double[][] MatrixMinors(double[][] A) {
+		//Нахождения матрицы, коэф которой являются миноры с соотв индексами
+		int n = A.length;
+		double[][] M = new double[n][n];
+		
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				M[i][j] = Det(MinorMatrix(A, i, j));
+			}
+		}
+		return M;
+	}
+	
+	public double[][] Transp(double[][] A) {
+		//Транспонирование матрицы
+		int n = A.length;
+		double c;
+		
+		for (int i = 1; i < n; i++) {
+			for (int j = 0; j < i; j++) {
+				c = A[i][j];
+				A[i][j] = A[j][i];
+				A[j][i] = c;
+			}
+		}
+		return A;
 	}
 	
 }
