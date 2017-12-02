@@ -24,7 +24,8 @@ public class Method {
 	
 	protected double yRes(double x) {
 		//Результат аппроксимации в точке х
-		return a[1]*x + a[2]*Math.pow(x, 3) + a[3]*Math.pow(x, 5);
+		double c = a[0]*x + a[1]*Math.pow(x, 3) + a[2]*Math.pow(x, 5);
+		return c;
 	}
 
 }
