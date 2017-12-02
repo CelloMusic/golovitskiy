@@ -9,7 +9,7 @@ public class MHM extends Method{
 		a = a0; //Начальные значения парамтров аппроксимации
 	}
 	
-	public double[] MHMIter() {
+	private double[] MHMIter() {
 		//Прогон одной итеррации
 		double[][] X = new double[k][3]; //Матрица ф[i,j]=фj(xi)
 		for (int i = 0; i < k; i++) {
@@ -48,6 +48,16 @@ public class MHM extends Method{
 		return a;
 	}
 	
-	
+	public double[] MHMResh(double pMHK, double p) {
+		//Решение МНМ. Зависит от невязки по МНК и желаемой точности в %
+		double pMHM; //Невязка по МНК
+		double pOtn; //Относительное отличие невязок
+		do {
+			a = MHMIter();
+			pMHM = AbsNevyazka();
+			pOtn = Math.abs(pMHK - pMHM) / pMHK;
+		} while (pOtn <= p);
+		return a;
+	}
 	
 }
