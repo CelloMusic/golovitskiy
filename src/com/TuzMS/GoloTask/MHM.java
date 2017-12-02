@@ -34,11 +34,6 @@ public class MHM extends Method{
 			Y[i][0] = Yi[i];
 		}
 		
-		/*for (int i = 0; i < 3; i++) {
-			System.out.print(a[i] + "	");
-		}
-		System.out.println();*/
-		
 		MatrixOperation m = new MatrixOperation();
 		//Результат одной итеррации
 		double[][] A = m.MultiMM(m.Obrat(m.MultiMM(m.Transp(X), m.MultiMM(W, X))), m.MultiMM(m.Transp(X), m.MultiMM(W, Y)));
@@ -52,11 +47,14 @@ public class MHM extends Method{
 		//Решение МНМ. Зависит от невязки по МНК и желаемой точности в %
 		double pMHM; //Невязка по МНК
 		double pOtn; //Относительное отличие невязок
+		int i = 0;
 		do {
 			a = MHMIter();
 			pMHM = AbsNevyazka();
-			pOtn = Math.abs(pMHK - pMHM) / pMHK;
-		} while (pOtn <= p);
+			pOtn = Math.abs(pMHK - pMHM) *100 / pMHK;
+			i++;
+		} while (pOtn > p);
+		System.out.println("Число итерраций: " + i);
 		return a;
 	}
 	
