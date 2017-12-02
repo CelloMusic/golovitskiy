@@ -13,19 +13,29 @@ public class Method {
 		k = Xi.length;
 	}
 		
-	protected double[] ResApproks() {
+	/*protected double[] ResApproks() {
 		//Результат аппроксимации
 		double[] YRes = new double[k];
 		for (int j = 0; j < k; j++) {
 			YRes[j] = yRes(Xi[j]);
 		}
 		return YRes;
-	}
+	}*/
 	
 	protected double yRes(double x) {
 		//Результат аппроксимации в точке х
 		double c = a[0]*x + a[1]*Math.pow(x, 3) + a[2]*Math.pow(x, 5);
 		return c;
 	}
-
+	
+	public double AbsNevyazka() {
+		//Абсолютная невязка
+		double p = 0;
+		for (int i = 0; i < k; i++) {
+			p += Math.pow(Yi[i] - yRes(Xi[i]), 2);
+		}
+		p = Math.sqrt(p);
+		return p;
+	}
+	
 }
