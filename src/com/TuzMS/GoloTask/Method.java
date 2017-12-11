@@ -14,15 +14,6 @@ public class Method {
 		k = Xi.length;
 		r = ri;
 	}
-		
-	/*protected double[] ResApproks() {
-		//Результат аппроксимации
-		double[] YRes = new double[k];
-		for (int j = 0; j < k; j++) {
-			YRes[j] = yRes(Xi[j]);
-		}
-		return YRes;
-	}*/
 	
 	protected double yRes(double x) {
 		//Результат аппроксимации в точке х
