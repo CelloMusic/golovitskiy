@@ -43,19 +43,32 @@ public class MHM extends Method{
 		return a;
 	}
 	
-	public double[] MHMResh(double pMHK, double p) {
-		//Решение МНМ. Зависит от невязки по МНК и желаемой точности в %
-		double pMHM; //Невязка по МНК
-		double pOtn; //Относительное отличие невязок
-		int i = 0;
+	public double[] MHMResh(double p) {
+		//Решение МНМ. Зависит от относительной невязки в %
+		double pMHM; //Невязка по МНM
+		/*int i = 0;
 		do {
 			a = MHMIter();
-			pMHM = AbsNevyazka();
-			pOtn = Math.abs(pMHK - pMHM) *100 / pMHK;
+			pMHM = OtnNevyazka();
+			System.out.println(pMHM);
 			i++;
-		} while (pOtn > p);
-		System.out.println("Число итерраций: " + i);
+		} while (pMHM > p);*/
+		for (int i = 0; i < 1000; i++) {
+			a = MHMIter();
+			pMHM = OtnNevyazka();
+			System.out.println(pMHM);
+		}
+		//System.out.println("Число итерраций: " + i);
 		return a;
 	}
 	
+	public double AbsNevyazka() {
+		//Абсолютная невязка
+		double p = 0;
+		for (int i = 0; i < k; i++) {
+			p += Math.abs(Yi[i] - yRes(Xi[i]));
+		}
+		p = Math.sqrt(p);
+		return p;
+	}
 }

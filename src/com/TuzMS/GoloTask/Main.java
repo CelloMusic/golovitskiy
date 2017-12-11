@@ -18,8 +18,8 @@ public class Main {
 			System.out.print(a[i] + "	");
 		}
 		System.out.println();
-		double pMHK = reshenieMHK.AbsNevyazka();
-		System.out.println("Невязка по МНК = " + pMHK);
+		double pMHK = reshenieMHK.OtnNevyazka();
+		System.out.println("Невязка по МНК = " + pMHK + " %");
 		
 		//МНМ
 		System.out.println("Начало решения МНМ:");
@@ -33,7 +33,7 @@ public class Main {
 		System.out.println("Начальные значения введены.");
 		MHM reshenieMHM = new MHM(xi, yi, b);
 		System.out.println("Решение методом наименьших модулей: ");
-		b = reshenieMHM.MHMResh(pMHK, 0.1);
+		b = reshenieMHM.MHMResh(15);
 		for (int i = 0; i < 3; i++) {
 			System.out.print(b[i] + "	");
 		}

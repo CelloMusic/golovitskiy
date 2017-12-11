@@ -39,13 +39,13 @@ public class Method {
 	}
 	
 	public double OtnNevyazka() {
-		//Относительная невязка
+		//Относительная невязка в %
 		double norma = 0;
 		for (int i = 0; i < k; i++) {
 			norma += Math.pow(Yi[i], 2);
 		}
 		norma = Math.sqrt(norma);
-		double p = AbsNevyazka() / norma;
+		double p = AbsNevyazka() * 100 / norma;
 		return p;
 	}
 	
