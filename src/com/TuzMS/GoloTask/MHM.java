@@ -2,43 +2,30 @@ package com.TuzMS.GoloTask;
 
 public class MHM extends Method{
 	//Метод наименьших модулей итеррационный
-	//A = (X'W(A0)X)^(-1)*X'W(A0)Y
 	
-	public MHM(double[] x, double[] y, double[] a0) {
-		super(x, y);
+	public MHM(double[] x, double[] y, double[] ri, double[] a0) {
+		super(x, y, ri);
 		a = a0; //Начальные значения парамтров аппроксимации
+		for (int i = 0; i < k; i++) {
+			r[i] /= Math.abs(Yi[i] - yRes(Xi[i]));
+		}
 	}
+	
+	/*private void setR() {
+		//Задание итеррируемого веса
+		for (int i = 0; i < k; i++) {
+			r[i] /= Math.abs(Yi[i] - yRes(Xi[i]));
+		}
+	}*/
+	
+	
 	
 	private double[] MHMIter() {
 		//Прогон одной итеррации
-		double[][] X = new double[k][3]; //Матрица ф[i,j]=фj(xi)
+		MHK resh = new MHK(Xi, Yi, r);
+		a = resh.MHKResh();
 		for (int i = 0; i < k; i++) {
-			for (int j = 0; j < 3; j++) {
-				X[i][j] = Math.pow(Xi[i], 2*j+1);
-			}
-		}
-		
-		double[][] W = new double[k][k];
-		for (int i = 0; i < k; i++) {
-			for (int j = 0; j < k; j++) {
-				if (i == j) {
-					W[i][i] = Math.abs(Yi[i] - yRes(Xi[i]));
-				} else {
-					W[i][j] = 0;
-				}
-			}
-		}
-		
-		double[][] Y = new double[k][1]; //Столбец Yi
-		for (int i = 0; i < k; i++) {
-			Y[i][0] = Yi[i];
-		}
-		
-		MatrixOperation m = new MatrixOperation();
-		//Результат одной итеррации
-		double[][] A = m.MultiMM(m.Obrat(m.MultiMM(m.Transp(X), m.MultiMM(W, X))), m.MultiMM(m.Transp(X), m.MultiMM(W, Y)));
-		for (int j = 0; j < 3; j++) {
-			a[j] = A[j][0];
+			r[i] /= Math.abs(Yi[i] - yRes(Xi[i]));
 		}
 		return a;
 	}
@@ -46,29 +33,19 @@ public class MHM extends Method{
 	public double[] MHMResh(double p) {
 		//Решение МНМ. Зависит от относительной невязки в %
 		double pMHM; //Невязка по МНM
-		/*int i = 0;
+		int i = 0;
 		do {
 			a = MHMIter();
 			pMHM = OtnNevyazka();
-			System.out.println(pMHM);
+			System.out.print(pMHM + "	");
+			for (int j = 0; j < 3; j++) {
+				System.out.print(a[j] + "	");
+			}
+			System.out.println();
 			i++;
-		} while (pMHM > p);*/
-		for (int i = 0; i < 1000; i++) {
-			a = MHMIter();
-			pMHM = OtnNevyazka();
-			System.out.println(pMHM);
-		}
-		//System.out.println("Число итерраций: " + i);
+		} while (pMHM > p);
+		System.out.println("Число итерраций: " + i);
 		return a;
 	}
 	
-	public double AbsNevyazka() {
-		//Абсолютная невязка
-		double p = 0;
-		for (int i = 0; i < k; i++) {
-			p += Math.abs(Yi[i] - yRes(Xi[i]));
-		}
-		p = Math.sqrt(p);
-		return p;
-	}
 }
