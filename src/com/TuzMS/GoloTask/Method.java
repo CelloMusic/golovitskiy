@@ -38,4 +38,15 @@ public class Method {
 		return p;
 	}
 	
+	public double OtnNevyazka() {
+		//Относительная невязка
+		double norma = 0;
+		for (int i = 0; i < k; i++) {
+			norma += Math.pow(Yi[i], 2);
+		}
+		norma = Math.sqrt(norma);
+		double p = AbsNevyazka() / norma;
+		return p;
+	}
+	
 }
