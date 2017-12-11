@@ -3,8 +3,8 @@ package com.TuzMS.GoloTask;
 public class MHK extends Method {
 	//Метод наименьших квадратов
 
-	public MHK(double[] x, double[] y) {
-		super(x, y);
+	public MHK(double[] x, double[] y, double[] ri) {
+		super(x, y, ri);
 	}
 
 	private double[] RaschB() {
@@ -14,7 +14,7 @@ public class MHK extends Method {
 		for (int t = 0; t < 3; t++) { //Бегаем по строкам
 			b[t] = 0;
 			for (int i = 0; i < k; i++) {
-				b[t] += Yi[i] * Math.pow(Xi[i], 2*t+1);
+				b[t] += r[i]*Yi[i] * Math.pow(Xi[i], 2*t+1);
 			}
 		}
 		return b;
@@ -28,7 +28,7 @@ public class MHK extends Method {
 			for (int j = 0; j < 3; j++) { //Бегаем по столбцам
 				matrix[t][j] = 0;
 				for (int i = 0; i < k; i++) {
-					matrix[t][j] += Math.pow(Xi[i], 2*t+1) * Math.pow(Xi[i], 2*j+1);
+					matrix[t][j] += r[i]*Math.pow(Xi[i], 2*t+1) * Math.pow(Xi[i], 2*j+1);
 				}
 			}
 		}

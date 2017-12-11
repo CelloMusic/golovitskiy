@@ -11,7 +11,12 @@ public class Main {
 		double[] yi = task.getArrY();
 		
 		//МНК
-		MHK reshenieMHK = new MHK(xi, yi);
+		double[] rMHK = new double[xi.length];
+		for (int i = 0; i < xi.length; i++) {
+			//Задание веса для МНК
+			rMHK[i] = 1;
+		}
+		MHK reshenieMHK = new MHK(xi, yi, rMHK);
 		double[] a = reshenieMHK.MHKResh();
 		System.out.println("Решение методом наименьших квадратов: ");
 		for (int i = 0; i < 3; i++) {

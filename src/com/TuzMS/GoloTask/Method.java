@@ -4,13 +4,15 @@ public class Method {
 	//Родительский класс для описания методов
 	protected double[] Xi; //Значения Х точек
 	protected double[] Yi; //Значения Y точек
+	protected double[] r; // Вес
 	protected double[] a = new double[3]; //Коэффициенты аппроксимирующей зависимости
 	protected int k; //Количесво точек
 		
-	public Method(double[] x, double[] y){
+	public Method(double[] x, double[] y, double[] ri){
 		Xi = x;
 		Yi = y;
 		k = Xi.length;
+		r = ri;
 	}
 		
 	/*protected double[] ResApproks() {
