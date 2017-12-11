@@ -6,28 +6,20 @@ public class MHM extends Method{
 	public MHM(double[] x, double[] y, double[] ri, double[] a0) {
 		super(x, y, ri);
 		a = a0; //Начальные значения парамтров аппроксимации
+	}
+	
+	private void SetR() {
+		//Задание итеррируемого веса
 		for (int i = 0; i < k; i++) {
 			r[i] /= Math.abs(Yi[i] - yRes(Xi[i]));
 		}
 	}
 	
-	/*private void setR() {
-		//Задание итеррируемого веса
-		for (int i = 0; i < k; i++) {
-			r[i] /= Math.abs(Yi[i] - yRes(Xi[i]));
-		}
-	}*/
-	
-	
-	
-	private double[] MHMIter() {
+	private void MHMIter() {
 		//Прогон одной итеррации
+		SetR();
 		MHK resh = new MHK(Xi, Yi, r);
 		a = resh.MHKResh();
-		for (int i = 0; i < k; i++) {
-			r[i] /= Math.abs(Yi[i] - yRes(Xi[i]));
-		}
-		return a;
 	}
 	
 	public double[] MHMResh(double p) {
@@ -35,13 +27,8 @@ public class MHM extends Method{
 		double pMHM; //Невязка по МНM
 		int i = 0;
 		do {
-			a = MHMIter();
+			MHMIter();
 			pMHM = OtnNevyazka();
-			System.out.print(pMHM + "	");
-			for (int j = 0; j < 3; j++) {
-				System.out.print(a[j] + "	");
-			}
-			System.out.println();
 			i++;
 		} while (pMHM > p);
 		System.out.println("Число итерраций: " + i);

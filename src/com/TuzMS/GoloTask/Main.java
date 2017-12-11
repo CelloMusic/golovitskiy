@@ -38,7 +38,7 @@ public class Main {
 		System.out.println("Начальные значения введены.");
 		MHM reshenieMHM = new MHM(xi, yi, r, b);
 		System.out.println("Решение методом наименьших модулей: ");
-		b = reshenieMHM.MHMResh(5);
+		b = reshenieMHM.MHMResh(16.117);
 		for (int i = 0; i < 3; i++) {
 			System.out.print(b[i] + "	");
 		}
