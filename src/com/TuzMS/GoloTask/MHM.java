@@ -1,15 +1,15 @@
 package com.TuzMS.GoloTask;
 
 public class MHM extends Method{
-	//Метод наименьших модулей итеррационный
+	//Метод наименьших модулей итерационный
 	
 	public MHM(double[] x, double[] y, double[] ri, double[] a0) {
 		super(x, y, ri);
-		a = a0; //Начальные значения парамтров аппроксимации
+		a = a0; //Начальные значения параметров аппроксимации
 	}
 	
 	private void SetR() {
-		//Задание итеррируемого веса
+		//Задание итерируемого веса
 		for (int i = 0; i < k; i++) {
 			r[i] /= Math.abs(Yi[i] - yRes(Xi[i]));
 		}
