@@ -11,15 +11,20 @@ public class Main {
 		double[] yi = task.getArrY();
 		
 		//МНК
-		MHK reshenieMHK = new MHK(xi, yi);
+		double[] r = new double[xi.length];
+		for (int i = 0; i < xi.length; i++) {
+			//Задание веса для МНК
+			r[i] = 1;
+		}
+		MHK reshenieMHK = new MHK(xi, yi, r);
 		double[] a = reshenieMHK.MHKResh();
 		System.out.println("Решение методом наименьших квадратов: ");
 		for (int i = 0; i < 3; i++) {
 			System.out.print(a[i] + "	");
 		}
 		System.out.println();
-		double pMHK = reshenieMHK.OtnNevyazka();
-		System.out.println("Невязка по МНК = " + pMHK + " %");
+		double pMHK = reshenieMHK.AbsNevyazka();
+		System.out.println("Невязка по МНК = " + pMHK);
 		
 		//МНМ
 		System.out.println("Начало решения МНМ:");
@@ -31,9 +36,9 @@ public class Main {
 		}
 		sc.close();
 		System.out.println("Начальные значения введены.");
-		MHM reshenieMHM = new MHM(xi, yi, b);
+		MHM reshenieMHM = new MHM(xi, yi, r, b);
 		System.out.println("Решение методом наименьших модулей: ");
-		b = reshenieMHM.MHMResh(15);
+		b = reshenieMHM.MHMResh(16.117);
 		for (int i = 0; i < 3; i++) {
 			System.out.print(b[i] + "	");
 		}
