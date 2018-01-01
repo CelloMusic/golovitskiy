@@ -1,14 +1,14 @@
 package com.TuzMS.GoloTask;
 
 public class MatrixOperation {
-	//Класс для описания различных операций над матрицами
+	//РљР»Р°СЃСЃ РґР»СЏ РѕРїРёСЃР°РЅРёСЏ СЂР°Р·Р»РёС‡РЅС‹С… РѕРїРµСЂР°С†РёР№ РЅР°Рґ РјР°С‚СЂРёС†Р°РјРё
 	
 	public double[][] MultiMM(double[][] A, double[][] B) {
-		//Перемножение матриц
-		int ai = A.length; //Число строк матрицы А
-		int ak = A[0].length; //Число столбцов матрицы А
-		int bk = B.length; //Число строк матрицы В
-		int bj = B[0].length; //Число столбцов матрицы В
+		//РџРµСЂРµРјРЅРѕР¶РµРЅРёРµ РјР°С‚СЂРёС†
+		int ai = A.length; //Р§РёСЃР»Рѕ СЃС‚СЂРѕРє РјР°С‚СЂРёС†С‹ Рђ
+		int ak = A[0].length; //Р§РёСЃР»Рѕ СЃС‚РѕР»Р±С†РѕРІ РјР°С‚СЂРёС†С‹ Рђ
+		int bk = B.length; //Р§РёСЃР»Рѕ СЃС‚СЂРѕРє РјР°С‚СЂРёС†С‹ Р’
+		int bj = B[0].length; //Р§РёСЃР»Рѕ СЃС‚РѕР»Р±С†РѕРІ РјР°С‚СЂРёС†С‹ Р’
 		
 		if (ak == bk) {
 			double[][] C = new double[ai][bj];
@@ -22,15 +22,15 @@ public class MatrixOperation {
 			}
 			return C;
 		} else {
-			System.out.println("Эти матрицы перемножать нельзя!");
+			System.out.println("Р­С‚Рё РјР°С‚СЂРёС†С‹ РїРµСЂРµРјРЅРѕР¶Р°С‚СЊ РЅРµР»СЊР·СЏ!");
 			return null;
 		}
 	}
 	
 	public double[][] MultiNM(double[][] A, double n) {
-		//Умножение матрицы на число
-		int ai = A.length; //Число строк матрицы А
-		int aj = A[0].length; //Число столбцов матрицы А
+		//РЈРјРЅРѕР¶РµРЅРёРµ РјР°С‚СЂРёС†С‹ РЅР° С‡РёСЃР»Рѕ
+		int ai = A.length; //Р§РёСЃР»Рѕ СЃС‚СЂРѕРє РјР°С‚СЂРёС†С‹ Рђ
+		int aj = A[0].length; //Р§РёСЃР»Рѕ СЃС‚РѕР»Р±С†РѕРІ РјР°С‚СЂРёС†С‹ Рђ
 		
 		for (int i = 0; i < ai; i++) {
 			for (int j = 0; j < aj; j++) {
@@ -41,7 +41,7 @@ public class MatrixOperation {
 	}
 	
 	public double Det(double[][] A) {
-		//Нахождение определителя матрицы рекурсивным алгоритмом
+		//РќР°С…РѕР¶РґРµРЅРёРµ РѕРїСЂРµРґРµР»РёС‚РµР»СЏ РјР°С‚СЂРёС†С‹ СЂРµРєСѓСЂСЃРёРІРЅС‹Рј Р°Р»РіРѕСЂРёС‚РјРѕРј
 		double det = 0;
 		int n = A.length;
 		
@@ -56,7 +56,7 @@ public class MatrixOperation {
 	}
 	
 	public double[][] MinorMatrix(double[][] A, int ai, int aj) {
-		//Нахождение матрицы минора А(ai, aj) (вычёркинание ai строки и aj столбца)
+		//РќР°С…РѕР¶РґРµРЅРёРµ РјР°С‚СЂРёС†С‹ РјРёРЅРѕСЂР° Рђ(ai, aj) (РІС‹С‡С‘СЂРєРёРЅР°РЅРёРµ ai СЃС‚СЂРѕРєРё Рё aj СЃС‚РѕР»Р±С†Р°)
 		int n = A.length - 1;
 		double[][] M = new double[n][n];
 		
@@ -81,12 +81,12 @@ public class MatrixOperation {
 	}
 	
 	public double AlgDop(double[][] A, int ai, int aj) {
-		//Нахождение алгебраического дополнения A(ai, aj)
+		//РќР°С…РѕР¶РґРµРЅРёРµ Р°Р»РіРµР±СЂР°РёС‡РµСЃРєРѕРіРѕ РґРѕРїРѕР»РЅРµРЅРёСЏ A(ai, aj)
 		return Math.pow(-1, ai + aj) * Det(MinorMatrix(A, ai, aj));
 	}
 	
 	public double[][] AlgDopMatrix(double[][] A) {
-		//Нахождения матрицы алгабраических дополнений
+		//РќР°С…РѕР¶РґРµРЅРёСЏ РјР°С‚СЂРёС†С‹ Р°Р»РіР°Р±СЂР°РёС‡РµСЃРєРёС… РґРѕРїРѕР»РЅРµРЅРёР№
 		int n = A.length;
 		double[][] M = new double[n][n];
 		
@@ -99,7 +99,7 @@ public class MatrixOperation {
 	}
 	
 	public double[][] Transp(double[][] A) {
-		//Транспонирование матрицы
+		//РўСЂР°РЅСЃРїРѕРЅРёСЂРѕРІР°РЅРёРµ РјР°С‚СЂРёС†С‹
 		int ni = A.length;
 		int nj = A[0].length;
 		double[][] M = new double[nj][ni];
@@ -113,7 +113,7 @@ public class MatrixOperation {
 	}
 	
 	public double[][] Obrat(double[][] A) {
-		//Нахождение обратной матрицы
+		//РќР°С…РѕР¶РґРµРЅРёРµ РѕР±СЂР°С‚РЅРѕР№ РјР°С‚СЂРёС†С‹
 		return MultiNM(Transp(AlgDopMatrix(A)), 1/Det(A));
 	}
 	

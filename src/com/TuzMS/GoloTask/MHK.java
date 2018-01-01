@@ -1,17 +1,17 @@
 package com.TuzMS.GoloTask;
 
 public class MHK extends Method {
-	//Метод наименьших квадратов
+	//РњРµС‚РѕРґ РЅР°РёРјРµРЅСЊС€РёС… РєРІР°РґСЂР°С‚РѕРІ
 
 	public MHK(double[] x, double[] y, double[] ri) {
 		super(x, y, ri);
 	}
 
 	private double[] RaschB() {
-		//Расчёт столбца свободных членов СЛАУ (2.5)
-		double[] b = new double[3]; //Столбец свободных членов СЛАУ (2.5)
-		
-		for (int t = 0; t < 3; t++) { //Бегаем по строкам
+		//Р Р°СЃС‡С‘С‚ СЃС‚РѕР»Р±С†Р° СЃРІРѕР±РѕРґРЅС‹С… С‡Р»РµРЅРѕРІ РЎР›РђРЈ (2.5)
+		double[] b = new double[3]; //РЎС‚РѕР»Р±РµС† СЃРІРѕР±РѕРґРЅС‹С… С‡Р»РµРЅРѕРІ РЎР›РђРЈ (2.5)
+
+		for (int t = 0; t < 3; t++) { //Р‘РµРіР°РµРј РїРѕ СЃС‚СЂРѕРєР°Рј
 			b[t] = 0;
 			for (int i = 0; i < k; i++) {
 				b[t] += r[i]*Yi[i] * Math.pow(Xi[i], 2*t+1);
@@ -21,11 +21,11 @@ public class MHK extends Method {
 	}
 	
 	private double[][] RaschA() {
-		//Расчёт матрицы коэффициентов при a(t,j) СЛАУ (2.5)
+		//Р Р°СЃС‡С‘С‚ РјР°С‚СЂРёС†С‹ РєРѕСЌС„С„РёС†РёРµРЅС‚РѕРІ РїСЂРё a(t,j) РЎР›РђРЈ (2.5)
 		double[][] matrix = new double[3][3];
-		
-		for (int t = 0; t < 3; t++) { //Бегаем по строкам
-			for (int j = 0; j < 3; j++) { //Бегаем по столбцам
+
+		for (int t = 0; t < 3; t++) { //Р‘РµРіР°РµРј РїРѕ СЃС‚СЂРѕРєР°Рј
+			for (int j = 0; j < 3; j++) { //Р‘РµРіР°РµРј РїРѕ СЃС‚РѕР»Р±С†Р°Рј
 				matrix[t][j] = 0;
 				for (int i = 0; i < k; i++) {
 					matrix[t][j] += r[i]*Math.pow(Xi[i], 2*t+1) * Math.pow(Xi[i], 2*j+1);
@@ -38,7 +38,7 @@ public class MHK extends Method {
 	private GaussMethod mnkRes = new GaussMethod(3, RaschA(), RaschB());
 	
 	public double[] MHKResh() {
-		//Собственно нахождение коэффициетов аппроксимации
+		//РЎРѕР±СЃС‚РІРµРЅРЅРѕ РЅР°С…РѕР¶РґРµРЅРёРµ РєРѕСЌС„С„РёС†РёРµС‚РѕРІ Р°РїРїСЂРѕРєСЃРёРјР°С†РёРё
 		a = mnkRes.GaussM();
 		return a;
 	}

@@ -4,46 +4,46 @@ import java.util.Scanner;
 
 public class Main {
 	public static void main(String [] args) {
-		//Чтение данных из файла
+		//Р§С‚РµРЅРёРµ РґР°РЅРЅС‹С… РёР· С„Р°Р№Р»Р°
 		GetData task = new GetData();
 		task.readFile(task.getTaskFileName());
 		double[] xi = task.getArrX();
 		double[] yi = task.getArrY();
 		
-		//МНК
+		//РњРќРљ
 		double[] r = new double[xi.length];
 		for (int i = 0; i < xi.length; i++) {
-			//Задание веса для МНК
+			//Р—Р°РґР°РЅРёРµ РІРµСЃР° РґР»СЏ РњРќРљ
 			r[i] = 1;
 		}
 		MHK reshenieMHK = new MHK(xi, yi, r);
 		double[] a = reshenieMHK.MHKResh();
-		System.out.println("Решение методом наименьших квадратов: ");
+		System.out.println("Р РµС€РµРЅРёРµ РјРµС‚РѕРґРѕРј РЅР°РёРјРµР»СЊС€РёС… РєРІР°РґСЂР°С‚РѕРІ: ");
 		for (int i = 0; i < 3; i++) {
 			System.out.print(a[i] + "	");
 		}
 		System.out.println();
 		double pMHK = reshenieMHK.AbsNevyazka();
-		System.out.println("Невязка по МНК = " + pMHK);
+		System.out.println("РќРµРІСЏР·РєР° РїРѕ РњРќРљ = " + pMHK);
 		
-		//МНМ
-		System.out.println("Начало решения МНМ:");
-		System.out.println("Введите начальные параметры аппроксимации (3 числа):");
+		//РњРќРњ
+		System.out.println("РќР°С‡Р°Р»Рѕ СЂРµС€РµРЅРёСЏ РњРќРњ:");
+		System.out.println("Р’РІРµРґРёС‚Рµ РЅР°С‡Р°Р»СЊРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹ Р°РїРїСЂРѕРєСЃРёРјР°С†РёРё (3 С‡РёСЃР»Р°):");
 		Scanner sc = new Scanner(System.in);
 		double[] b = new double[3];
 		for (int i = 0; i < b.length; i++) {	
 			b[i] = sc.nextDouble();
 		}
 		sc.close();
-		System.out.println("Начальные значения введены.");
+		System.out.println("РќР°С‡Р°Р»СЊРЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ РІРІРµРґРµРЅС‹.");
 		MHM reshenieMHM = new MHM(xi, yi, r, b);
-		System.out.println("Решение методом наименьших модулей: ");
+		System.out.println("Р РµС€РµРЅРёРµ РјРµС‚РѕРґРѕРј РЅР°РёРјРµРЅСЊС€РёС… РјРѕРґСѓР»РµР№: ");
 		b = reshenieMHM.MHMResh(16.117);
 		for (int i = 0; i < 3; i++) {
 			System.out.print(b[i] + "	");
 		}
 		System.out.println();
 		double pMHM = reshenieMHM.AbsNevyazka();
-		System.out.println("Невязка по МНМ = " + pMHM);
+		System.out.println("РќРµРІСЏР·РєР° РїРѕ РњРќРњ = " + pMHM);
 	}
 }

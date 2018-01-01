@@ -1,37 +1,37 @@
 package com.TuzMS.GoloTask;
 
 public class MHM extends Method{
-	//Метод наименьших модулей итерационный
+	//РњРµС‚РѕРґ РЅР°РёРјРµРЅСЊС€РёС… РјРѕРґСѓР»РµР№ РёС‚РµСЂР°С†РёРѕРЅРЅС‹Р№
 	
 	public MHM(double[] x, double[] y, double[] ri, double[] a0) {
 		super(x, y, ri);
-		a = a0; //Начальные значения параметров аппроксимации
+		a = a0; //РќР°С‡Р°Р»СЊРЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ РїР°СЂР°РјРµС‚СЂРѕРІ Р°РїРїСЂРѕРєСЃРёРјР°С†РёРё
 	}
 	
 	private void SetR() {
-		//Задание итерируемого веса
+		//Р—Р°РґР°РЅРёРµ РёС‚РµСЂРёСЂСѓРµРјРѕРіРѕ РІРµСЃР°
 		for (int i = 0; i < k; i++) {
 			r[i] /= Math.abs(Yi[i] - yRes(Xi[i]));
 		}
 	}
 	
 	private void MHMIter() {
-		//Прогон одной итеррации
+		//РџСЂРѕРіРѕРЅ РѕРґРЅРѕР№ РёС‚РµСЂР°С†РёРё
 		SetR();
 		MHK resh = new MHK(Xi, Yi, r);
 		a = resh.MHKResh();
 	}
 	
 	public double[] MHMResh(double p) {
-		//Решение МНМ. Зависит от относительной невязки в %
-		double pMHM; //Невязка по МНM
+		//Р РµС€РµРЅРёРµ РњРќРњ. Р—Р°РІРёСЃРёС‚ РѕС‚ РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕР№ РЅРµРІСЏР·РєРё РІ %
+		double pMHM; //РќРµРІСЏР·РєР° РїРѕ РњРќM
 		int i = 0;
 		do {
 			MHMIter();
 			pMHM = OtnNevyazka();
 			i++;
 		} while (pMHM > p);
-		System.out.println("Число итерраций: " + i);
+		System.out.println("Р§РёСЃР»Рѕ РёС‚РµСЂР°С†РёР№: " + i);
 		return a;
 	}
 	

@@ -1,12 +1,12 @@
 package com.TuzMS.GoloTask;
 
 public class Method {
-	//Родительский класс для описания методов
-	protected double[] Xi; //Значения Х точек
-	protected double[] Yi; //Значения Y точек
-	protected double[] r; // Вес
-	protected double[] a = new double[3]; //Коэффициенты аппроксимирующей зависимости
-	protected int k; //Количесво точек
+	//Р РѕРґРёС‚РµР»СЊСЃРєРёР№ РєР»Р°СЃСЃ РґР»СЏ РѕРїРёСЃР°РЅРёСЏ РјРµС‚РѕРґРѕРІ
+	protected double[] Xi; //Р—РЅР°С‡РµРЅРёСЏ РҐ С‚РѕС‡РµРє
+	protected double[] Yi; //Р—РЅР°С‡РµРЅРёСЏ Y С‚РѕС‡РµРє
+	protected double[] r; // Р’РµСЃ
+	protected double[] a = new double[3]; //РљРѕСЌС„С„РёС†РёРµРЅС‚С‹ Р°РїРїСЂРѕРєСЃРёРјРёСЂСѓСЋС‰РµР№ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё
+	protected int k; //РљРѕР»РёС‡РµСЃРІРѕ С‚РѕС‡РµРє
 		
 	public Method(double[] x, double[] y, double[] ri){
 		Xi = x;
@@ -16,13 +16,13 @@ public class Method {
 	}
 	
 	protected double yRes(double x) {
-		//Результат аппроксимации в точке х
+		//Р РµР·СѓР»СЊС‚Р°С‚ Р°РїРїСЂРѕРєСЃРёРјР°С†РёРё РІ С‚РѕС‡РєРµ С…
 		double c = a[0]*x + a[1]*Math.pow(x, 3) + a[2]*Math.pow(x, 5);
 		return c;
 	}
 	
 	public double AbsNevyazka() {
-		//Абсолютная невязка
+		//РђР±СЃРѕР»СЋС‚РЅР°СЏ РЅРµРІСЏР·РєР°
 		double p = 0;
 		for (int i = 0; i < k; i++) {
 			p += Math.pow(Yi[i] - yRes(Xi[i]), 2);
@@ -32,7 +32,7 @@ public class Method {
 	}
 	
 	public double OtnNevyazka() {
-		//Относительная невязка в %
+		//РћС‚РЅРѕСЃРёС‚РµР»СЊРЅР°СЏ РЅРµРІСЏР·РєР° РІ %
 		double norma = 0;
 		for (int i = 0; i < k; i++) {
 			norma += Math.pow(Yi[i], 2);

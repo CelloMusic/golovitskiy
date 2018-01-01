@@ -1,7 +1,7 @@
 package com.TuzMS.GoloTask;
 
 public class CorrectRecord {
-	//Данный класс переделывае запись числа в форму, необходимую для типа double
+	//Р”Р°РЅРЅС‹Р№ РєР»Р°СЃСЃ РїРµСЂРµРґРµР»С‹РІР°Рµ Р·Р°РїРёСЃСЊ С‡РёСЃР»Р° РІ С„РѕСЂРјСѓ, РЅРµРѕР±С…РѕРґРёРјСѓСЋ РґР»СЏ С‚РёРїР° double
 	
 	public double Rewrite(String fStr) {
 		

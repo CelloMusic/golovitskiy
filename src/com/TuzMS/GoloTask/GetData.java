@@ -6,27 +6,27 @@ import java.io.File;
 import java.io.BufferedReader;
 
 public class GetData {
-	private final String taskFileName = "Task.txt"; //Название файла с заданием
-	private double[] arrX = new double[33]; //Массив значений X
-	private double[] arrY = new double[33]; //Массив значений Y
+	private final String taskFileName = "Task.txt"; ////РќР°Р·РІР°РЅРёРµ С„Р°Р№Р»Р° СЃ Р·Р°РґР°РЅРёРµРј
+	private double[] arrX = new double[33]; //РњР°СЃСЃРёРІ Р·РЅР°С‡РµРЅРёР№ X
+	private double[] arrY = new double[33]; //РњР°СЃСЃРёРІ Р·РЅР°С‡РµРЅРёР№ Y
 	
 	public void readFile(String fileName) {
 		try {
-			File taskFile = new File(taskFileName); //Файл открыт
-			FileReader readTaskFile = new FileReader(taskFile); //Файл открыт для чтения
-			BufferedReader reader = new BufferedReader(readTaskFile); //Читатель файла
+			File taskFile = new File(taskFileName); //Р¤Р°Р№Р» РѕС‚РєСЂС‹С‚
+			FileReader readTaskFile = new FileReader(taskFile); //Р¤Р°Р№Р» РѕС‚РєСЂС‹С‚ РґР»СЏ С‡С‚РµРЅРёСЏ
+			BufferedReader reader = new BufferedReader(readTaskFile); //Р§РёС‚Р°С‚РµР»СЊ С„Р°Р№Р»Р°
 			String line = reader.readLine();
 			
 			for (int i = 1; i <=12; i++){
-				//Отмотка до строки со значениями
+				//РћС‚РјРѕС‚РєР° РґРѕ СЃС‚СЂРѕРєРё СЃРѕ Р·РЅР°С‡РµРЅРёСЏРјРё
 				line = reader.readLine();
 			}
 			
-			int i = 0; //Счётчик массивов
-			CorrectRecord rec = new CorrectRecord(); //Для записи числа в правильной форме
+			int i = 0; //РЎС‡С‘С‚С‡РёРє РјР°СЃСЃРёРІРѕРІ
+			CorrectRecord rec = new CorrectRecord(); //Р”Р»СЏ Р·Р°РїРёСЃРё С‡РёСЃР»Р° РІ РїСЂР°РІРёР»СЊРЅРѕР№ С„РѕСЂРјРµ
 			
 			while (line != null){
-				//Записываем значения точек в массивы
+				//Р—Р°РїРёСЃС‹РІР°РµРј Р·РЅР°С‡РµРЅРёСЏ С‚РѕС‡РµРє РІ РјР°СЃСЃРёРІС‹
 				arrX[i] = rec.Rewrite(line);
 				line = reader.readLine();
 				arrY[i] = rec.Rewrite(line);
